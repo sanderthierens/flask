@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    </head>
+    <h1>Push Up 3000</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.amount.label }}<br>
+            {{ form.amount(size=32) }}<br>
+            {% for error in form.amount.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+    <table>
+    <thead><tr><th>Name</th><th>Description</th></tr></thead>
+    <tbody>
+    {% for value in progress %}
+         <tr><td>{{value.username}}</td><td>{{value.amount}}</td></tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <table>
+    <thead><tr><th>Name</th><th>Description</th></tr></thead>
+    <tbody>
+    {% for user in users %}
+         <tr><td>{{user.username}}</td><td>{{user.sum_values}}</td></tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <table style="width:100%">
+      <tr>
+        <th>Date:</th>
+        <td>Bill Gates</td>
+      </tr>
+          {% for user in users %}
+            <tr>
+                <th>{{user.username}}</th>
+                <td>{{user.sum_values}}</td>
+            </tr>
+          {% endfor %}
+    </table>
+
+{% endblock %}
